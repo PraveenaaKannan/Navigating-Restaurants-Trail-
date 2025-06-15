@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Navigating Restaurant Trail - Perfect Plate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/a2e0c6b15b.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Lora', serif;
+      background-image: url('images/background.jpg');
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    /* Header with Logo */
+    .header-logo {
+      text-align: center;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-logo img {
+      width: 280px;
+      height: auto;
+      transition: transform 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .header-logo img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Left-side Arrow */
+    .arrow-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    /* Hidden Buttons */
+    .menu-buttons {
+      position: fixed;
+      top: 80px;
+      left: -150px;
+      transition: left 0.3s ease;
+      z-index: 100;
+    }
+
+    .menu-buttons button {
+      display: block;
+      margin-bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      color: white;
+      border: 2px solid #fff;
+      padding: 12px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      width: 150px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .menu-buttons button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #007bff;
+    }
+
+    /* Content area */
+    .content {
+      padding: 50px;
+      background-color: rgba(0, 0, 0, 0.5);
+      margin-left: 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .content h1 {
+      color: #f8f9fa;
+      font-weight: bold;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 18px;
+      color: #ddd;
+      line-height: 1.8;
+    }
+
+    .toggle-section {
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #f8f9fa;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 5px;
+      border: none;
+      width: 100%;
+      text-align: left;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .toggle-section:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .section-content {
+      display: none;
+      padding: 15px;
+      margin-top: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .section-content.show {
+      display: block;
+    }
+
+    /* Logout Button */
+    .logout-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .logout-button:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Logo -->
+  <div class="header-logo">
+    <img src="images/logo.jpg" alt="Perfect Plate Logo">
+  </div>
+
+  <!-- Logout Button -->
+  <button class="logout-button" onclick="logout()">Logout</button>
+
+  <!-- Main Layout -->
+  <div class="d-flex">
+    
+    <!-- Left-side Arrow and Buttons -->
+    <span class="arrow-toggle" id="arrowToggle">&#8594;</span>
+    <div class="menu-buttons" id="menuButtons">
+      <button onclick="window.location.href='team.html'">Team Members</button>
+      <button onclick="window.location.href='dashboard.html'">IBM Dashboard</button>
+      <button onclick="window.location.href='about.html'">About Restaurant</button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <h1>🍽️ Navigating Restaurant Trail - A Business Intelligence Project</h1>
+      <p>
+        Restaurants face several key challenges in managing operations effectively. They often lack insight into what dishes are popular, when the busiest hours are, and how frequently customers return. This absence of data-driven decisions leads to inefficiencies in service, staffing, and customer satisfaction.
+      </p>
+      <p>
+        Our project, <strong>Navigating Restaurant Trail</strong>, aims to solve these problems using an interactive and intelligent dashboard built with <strong>IBM Cognos Analytics</strong>. By analyzing customer behavior, dining patterns, and sales data, we transform raw information into actionable insights for restaurant managers.
+      </p>
+
+      <button class="toggle-section" id="dashboard">🔍 What This Dashboard Does:</button>
+      <div id="dashboard-content" class="section-content">
+        <ul>
+          <li>Identifies <strong>peak dining hours</strong> to better allocate staff and resources</li>
+          <li>Tracks <strong>customer loyalty</strong> to retain high-value customers</li>
+          <li>Analyzes <strong>menu performance</strong> to highlight top and low-selling dishes</li>
+          <li>Displays <strong>KPIs</strong> like revenue, order volume, and feedback scores</li>
+          <li>Uses <strong>heatmaps</strong> and graphs to visualize traffic and table usage</li>
+        </ul>
+      </div>
+
+      <button class="toggle-section" id="why">🧠 Why This Matters:</button>
+      <div id="why-content" class="section-content">
+        <p>
+          Restaurants collect large volumes of data every day—from food orders and payment types to customer visits and staff schedules.
+          However, without proper tools, this data remains unused. Our dashboard simplifies this complexity by organizing and presenting insights visually, making it easier for restaurant owners to:
+        </p>
+        <ul>
+          <li>Make faster and smarter business decisions</li>
+          <li>Improve the overall dining experience</li>
+          <li>Manage inventory and reduce waste</li>
+          <li>Offer personalized promotions to loyal customers</li>
+        </ul>
+      </div>
+
+      <button class="toggle-section" id="workflow">🛠️ Project Workflow:</button>
+      <div id="workflow-content" class="section-content">
+        <ol>
+          <li><strong>Data Collection:</strong> Creating a rich dataset with 40 attributes (orders, items, customer feedback, staff, payments, etc.)</li>
+          <li><strong>Data Preparation:</strong> Cleaning and modeling data in IBM Cognos Data Modules</li>
+          <li><strong>Dashboard Design:</strong> Building visuals like bar charts, pie charts, KPIs, and heatmaps</li>
+          <li><strong>Analysis:</strong> Discovering customer habits, peak times, and top dishes</li>
+          <li><strong>Optimization Suggestions:</strong> Recommending ways to improve operations based on insights</li>
+          <li><strong>Sharing Results:</strong> Exporting or sharing dashboards to guide real-time decisions</li>
+        </ol>
+      </div>
+
+      <p>
+        In conclusion, our project delivers a modern, data-driven solution to the restaurant industry by unlocking insights hidden in daily operations. With this tool, Perfect Plate and other restaurants can boost efficiency, revenue, and customer satisfaction through smarter analytics.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("menuButtons");
+      var arrow = document.getElementById("arrowToggle");
+      if (menu.style.left === "-150px") {
+        menu.style.left = "0";
+        arrow.innerHTML = "&#8592;";
+      } else {
+        menu.style.left = "-150px";
+        arrow.innerHTML = "&#8594;";
+      }
+    }
+
+    document.getElementById("arrowToggle").addEventListener("click", toggleMenu);
+
+    // Toggle content sections
+    document.querySelectorAll('.toggle-section').forEach(function(button) {
+      button.addEventListener("click", function() {
+        var content = document.getElementById(button.id + '-content');
+        content.classList.toggle('show');
+      });
+    });
+
+    // Logout function
+    function logout() {
+      window.location.href = 'login.html'; // Redirect to login page
+    }
+  </script>
+
+</body>
+</html>

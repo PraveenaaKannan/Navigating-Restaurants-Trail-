@@ -1,0 +1,15 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  .bg-primary {
+    background-color: #003366 !important;
+  }
+  a.nav-link:hover {
+    background-color: #0056b3;
+    border-radius: 5px;
+  }
+  .card {
+    background: #fff;
+    border: none;
+  }
+  
